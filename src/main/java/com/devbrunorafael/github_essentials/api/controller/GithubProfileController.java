@@ -14,7 +14,7 @@ public class GithubProfileController {
     private GithubUserProfileService githubUserProfileService;
 
     @GetMapping("/{username}")
-    public ResponseEntity<GithubUserProfileModel> findUser(@PathVariable String username){
+    public ResponseEntity<GithubUserProfileModel> findUserProfile(@PathVariable String username){
          GithubUserProfileModel userProfile = this.githubUserProfileService.searchUserProfile(username);
          return ResponseEntity.ok(userProfile);
     }
