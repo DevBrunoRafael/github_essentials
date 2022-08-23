@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor
-@Api(value = "Api do github")
+@Api(value = "Github API")
 public class GithubProfileController {
 
     private GithubUserProfileService githubUserProfileService;
 
     @GetMapping("/{username}")
-    @ApiOperation(value = "Retorna informações do perfil do usuário informado")
+    @ApiOperation(value = "Fetches information from the informed user's profile")
     public ResponseEntity<GithubUserProfileModel> findUserProfile(@PathVariable String username){
          GithubUserProfileModel userProfile = this.githubUserProfileService.searchUserProfile(username);
          return ResponseEntity.ok(userProfile);
