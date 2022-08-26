@@ -12,4 +12,6 @@ public class GithubUserProfileModel {
     private String blog;
     private String location;
 
+
+
 }
