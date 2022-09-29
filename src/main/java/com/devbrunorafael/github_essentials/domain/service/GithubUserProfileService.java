@@ -11,6 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -45,10 +46,13 @@ public class GithubUserProfileService {
         repositoriesModelFlux.subscribe(userProfileModel -> {
             System.out.println("Flux finished");
         });
+        List<GithubRepositoriesModel> repositories = repositoriesModelFlux
+                .collectList().block();
 
-        return repositoriesModelFlux
-                .collectList()
-                .block();
+        assert repositories != null;
+        return repositories.stream()
+                .skip(1)
+                .collect(Collectors.toList());
     }
 
 }
